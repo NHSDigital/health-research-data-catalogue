@@ -1,41 +1,573 @@
 # This is an OpenAPI Specification (https://swagger.io/specification/)
-# for health-research-data-catalogue owned by NHS Digital (https://digital.nhs.uk/)
-openapi: '3.0.0'
+# for the Health Research Data Catalogue API
+# owned by NHS Digital (https://digital.nhs.uk/)
+openapi: "3.0.0"
 info:
-  title: 'health-research-data-catalogue'
-  version: 'Computed and injected at build time by `scripts/set_version.py`'
+  version: "{VERSION}"
+  title: Health Research Data Catalogue API
   description: |
+    
     ## Overview
-    Add a fully fledged description here with markdown syntax.
-    For help completing the content of your API spec, see our guidance on the minimum standard (bronze) details 
-    to include [here](https://nhsd-confluence.digital.nhs.uk/display/APM/Writing+a+bronze+API+cover+page). You should also base your content on our exemplar API - [PDS FHIR](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir).
+    Use this API to retrieve metadata information suitable for publication in a health research data catalogue. 
+
+    You can:
+    * get a list of data sets
+    * get data set details 
+
+    You cannot currently use this API to:
+    * retrieve data sets as a bulk transfer
+    * retrieve data set feeds
+
+    You can get the following metadata information for each data set:
+    * characteristics such as: publisher, keywords, coverage, provenance, access, format, standards and data utility
+    * logical descriptions of field-level data
+
+    The API conforms to the [HDR UK Dataset Metadata Schema Standard v2.0.2](https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json) created to enable sharing of information with the UK-wide 'federated' health research data catalogue.
+
+    ### API scope
+    Current scope is limited to metadata information about national health-related data sets (such as description, size of the population contained within that data set and the legal basis for access) that can help researchers and innovators decide whether a data set could be useful to their research and help them to make further health discoveries.
+
     ## Who can use this API
-    To be completed.
+    This API can only be used where there is a legal basis to do so. Make sure you have a valid use case before you go too far with your development. You must do this before you can go live (see ‘Onboarding’ below).
+
     ## Related APIs
-    To be completed.
+    There are no related APIs.
+
     ## API status and roadmap
-    To be completed.
-    ## Service level
-    To be completed.
+    This API is initially for use by Health Data Research (HDR) UK developers with other use cases to follow later.
+
+    This API is in [alpha](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#api-status), meaning:
+    - the API is available in our sandbox and integration test environments
+    - the API is not yet available for production use
+    - we might make breaking changes, but only if we cannot avoid it, and we'll give advance notice
+
+    To see our roadmap, or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/?order=popular&filter=all&tag=health-research-data-api#controls).
+    If you have any other queries, please [contact us](https://digital.nhs.uk/developer/help-and-support).
+
     ## Technology
-    To be completed.
+    This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest-apis). 
+
     ## Network access
-    To be completed.
+
+    This API is available on the internet and, indirectly, on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network). 
+    
+    For more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
+
     ## Security and authorisation
-    To be completed.
+    
+    This API is [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis), meaning we authenticate and authorise the calling application and we do not authenticate or authorise the end user.
+    
+    Although we don't authenticate or authorise the end user, for some APIs we do require the calling application to do it 'locally'. For other APIs we don't require the end user to be authenticated or authorised, or even to be present.
+    
+    We support the following security patterns for application-restricted APIs:
+    - [Application-restricted RESTful API - API key authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication)
+   
+    For more details, see [application-restricted APIs](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis).
+
     ## Environments and testing
-    To be completed.
+    | Purpose                                | Base URL                                            |
+    | ---------------------------------------|-----------------------------------------------------|
+    | Sandbox                                | `https://sandbox.api.service.nhs.uk/health-research-data-catalogue`|
+    | Integration test                       | `https://int.api.service.nhs.uk/health-research-data-catalogue`    |
+    | Production                             | Not yet available                                         |
+    
+    ### Sandbox testing
+    Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing):
+    * is for early developer testing
+    * only covers a limited set of scenarios
+    * is open-access, so does not allow you to test authorisation
+    
+    For more details on sandbox testing, or to try out the sandbox using our \"Try this API\" feature, see the documentation for each endpoint.
+ 
+    ### Integration testing
+    Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing): 
+    - is for formal integration testing.
+    - includes application authentication
+
+    It also includes ready-to-use metadata information about national health-related data sets test data.
+    
+    For more details see [integration testing with our RESTful APIs](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing-with-our-restful-apis).
+    
+ 
     ## Onboarding
-    To be completed.
+    You need to get your software approved by us before it can go live with this API. We call this onboarding. The onboarding process can sometimes be quite long, so it’s worth planning well ahead.
+
+    More details on the onboarding process to follow.
   contact:
-    name: 'health-research-data-catalogue API Support'
+    name: Health Research Data Catalogue API Support
     url: 'https://digital.nhs.uk/developer/help-and-support'
     email: api.management@nhs.net
 servers:
   - url: 'https://sandbox.api.service.nhs.uk/health-research-data-catalogue'
-    description: Sandbox environment.
+    description: Sandbox environment
   - url: 'https://int.api.service.nhs.uk/health-research-data-catalogue'
-    description: Integration test environment.
-  - url: 'https://api.service.nhs.uk/health-research-data-catalogue'
-    description: Production environment.
-paths: {}
+    description: Integration test environment.   
+x-spec-publication:
+  try-this-api:
+    disabled: false
+  operation-order:
+  - operations:
+    - method: GET
+      path: /datasets
+    - method: GET
+      path: '/datasets/{id}' 
+paths:
+  /datasets:    
+    get:
+      summary: Get a list of data sets
+      operationId: get-datasets-list      
+      description: |
+
+        ## Overview
+        Use this endpoint to get a summary list of published data sets.
+
+        ## Summary data set metadata returned
+        
+        The summary data set metadata returned by this search includes:
+        * schema conformance
+        * data set persistent identifier
+        * data set name
+        * data set description
+        * data set version
+        * self continuation link
+        * data set metadata creation date
+        * data set metadata modification date
+        * source of the metadata
+
+        ## Sandbox test scenarios
+        You can test the following scenario in our sandbox environment:
+        
+        | Scenario                           | Request                                                              | Response                                   |
+        | ---------------------------------- | -------------------------------------------------------------------- | ------------------------------------------ |
+        | Published summary data sets exist  | No filters applied                                                   | HTTP Status 200 with summary list of published data sets in response body |
+     
+
+        You can try out the sandbox using the 'Try this API' feature on this page.
+       
+
+      parameters:
+       - $ref: '#/components/parameters/ApiKey'      
+       - $ref: '#/components/parameters/CorrelationID'     
+       - $ref: '#/components/parameters/RequestID'                 
+       # - in: query
+       #   name: q
+       #   description: query
+       #   schema:
+       #     type: string  
+#        - in: query
+#          name: offset
+#          description: The first result to retrieve. If not set (offset = 0), results will be retrieved starting from row 0.
+#          schema:
+#            type: integer
+#            format: int32
+# #           default: "0"                
+#        - in: query
+#          name: limit
+#          description: The maximum number of results to retrieve. If not set (limit = 0), the default limit will be used.
+#          schema:
+#            type: integer
+#            format: int32
+# #           default: "0"       
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                # title: Container object for all matched resources
+                description: Container object for all summary dataset resources that match the request.
+                required:
+                - total
+                - items
+                properties:
+                  total:
+                    type: integer
+                    # title: Total number of matches
+                    description: The total number of resources that match the request.
+                    minimum: 1
+                # type: object
+                # properties:
+                #   query:
+                #     type: object
+                #     properties:
+                #       # q:
+                #       #   type: string
+                #       #   description: TBC
+                #       #   example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
+                #       total:
+                #         type: string
+                #         example: 181
+                      # limit:
+                      #   type: string
+                      #   description: The maximum number of results to retrieve
+                      #   example: 1000
+                      # offset:
+                      #   type: string
+                      #   description: The first result to retrieve
+                      #   example: 0
+                  # '@schema':    
+                  #   type: object
+                  #   properties:
+                  #       type:
+                  #         type: string
+                  #         description: JSON document type
+                  #         example: Dataset
+                  #       version:
+                  #         type: string 
+                  #         description: Dataset schema version
+                  #         "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/semver" 
+                  #       url: 
+                  #         type: string
+                  #         description: Dataset URL
+                  #         # anyOf:
+                  #         # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/uuidv4"
+                  #         "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/url"
+                  items:
+                    type: array
+                    # title: Items in the container object
+                    description: Repeats all summary dataset resources (items) that match the request.
+                    items:
+                      type: object
+                      required:
+                      - '@schema'
+                      # - identifier
+                      - persistentId
+                      - name
+                      - description
+                      - version
+                      - self
+                      - issued
+                      - modified
+                      - source
+                      properties:
+                        # '@schema':    
+                        #   type: object
+                        #   # title: JSON Schema conformance
+                        #   description: JSON Schema specification that summary dataset resource (item) conforms to.
+                        #   required:
+                        #   - type
+                        #   - url
+                        #   properties:
+                        #     type:
+                        #       type: string
+                        #       # title: JSON document type
+                        #       description: JSON document type. The JSON dataset is a JSON document, which includes descriptive metadata.
+                        #       example: Dataset
+                        #     # version:
+                        #     #   type: string 
+                        #     #   description: Dataset schema version
+                        #     #   "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/semver" 
+                        #     url: 
+                        #       type: string
+                        #       # title: Dataset schema URL
+                        #       description: Dataset schema URL resolves to version of conformant JSON schema.
+                        #       example: https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json
+                        #       # oneOf:
+                        #       # # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/uuidv4"
+                        #       # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/url"
+                        '@schema':
+                          type: string
+                          format: uri
+                          description: JSON Schema specification that summary dataset resource (item) conforms to.
+                          example: https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json
+                          # description: HDR UK Dataset schema
+                          # example: https://hdruk.github.io/schemata/schema/dataset/latest/dataset.schema.json                          
+                        # type:
+                        #   type: string
+                        #   description: JSON document type
+                        #   example: Dataset
+                        # identifier:
+                        #   type: string
+                        #   title: Dataset resource identifier
+                        #   description: Dataset resource identifier
+                        #   anyOf:
+                        #   - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/uuidv4"
+                        #   - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/url"
+                        persistentId:
+                          type: string
+                          # title: Dataset persistent identifier
+                          description: Data set persistent identifier that is common across all data set revisions.
+                          pattern: "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+                          minLength: 36
+                          maxLength: 36
+                          example: 226fb3f1-4471-400a-8c39-2b66d46a39b6
+                          # type: string
+                          # title: Dataset persistent identifier
+                          # description: Dataset persistent identifier that is common across all dataset revisions
+                          # anyOf:
+                          # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/uuidv4"
+                          # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/url"
+                        name:
+                          type: string
+                          # title: Dataset name
+                          description: Data set name.
+                          example: Civil Registration - Deaths
+                        description:
+                          type: string
+                          # title: Dataset description
+                          description: Data set description.
+                          example: Deaths registration data (all deaths in England and Wales) collected from The Registrar General for England and Wales. Record-level patient dataset, where a record represents one death registration. 
+                        version:
+                          type: string 
+                          # title: Dataset metadata version
+                          description: Data set version.
+                          # "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/semver"
+                          pattern: "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$"
+                          example: 1.1.0
+                        self:
+                          type: string
+                          # title: Self continuation link
+                          description: Self continuation link of a search result.
+                          example: https://api.service.nhs.uk/health-research-data-catalogue/datasets/dd5f0174-575f-4f4c-a4fc-b406aab953d9
+                        issued:
+                          type: string
+                          # title: Creation date
+                          description: Data set metadata creation date.
+                          format: date-time
+                          example: 2020-08-05T14:35:59Z
+                        modified:
+                          type: string
+                          # title: Modification date
+                          description: Data set metadata modification date.
+                          format: date-time
+                          example: 2021-01-28T14:15:46Z
+                        source:
+                          type: string 
+                          # title: The source of the dataset
+                          description: The source of the data set.
+                          # "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/source"               
+                          example: Other
+              example:  
+                $ref: components/examples/dataset-list-example4.json            
+        "4XX":
+          description: |
+            An error occurred as follows:
+            
+            | HTTP status | Error code                 | Description |
+            | ----------- | -------------------------- | --------------------------------------------- |
+            | 401         | ACCESS_DENIED              | Access token missing, invalid or expired, or calling application not configured for this operation. |
+            | 404         | RESOURCE_NOT_FOUND         | No dataset resources found. |
+            | 404         | INVALID_ENDPOINT_PATH      | Invalid endpoint path. |     
+            | 429         | TOO_MANY_REQUESTS          | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+
+          content:
+            application/fhir+json:
+              schema:
+                $ref: 'components/schemas/OperationOutcome-2.yaml'
+              example:
+                resourceType: OperationOutcome
+                issue:
+                  - severity: error
+                    code: structure
+                    details:
+                      coding:
+                        - system: 'https://fhir.nhs.uk/R4/CodeSystem/Spine-ErrorOrWarningCode'
+                          version: '1'
+                          code: ACCESS_DENIED
+                          display: access has been denied to process this request
+
+        "5XX":
+          description: |
+
+            A 5xx status code means the server has a problem. For more details on the most common 5xx status codes and their meanings see the [HTTP status codes](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes).
+
+        # "500":
+        #   description: Internal Server Error
+        #   content:
+        #     application/fhir+json:
+        #       schema:
+        #         $ref: components/schemas/OperationErrorOutcome.yaml
+        #       example:
+        #         resourceType: OperationOutcome
+        #         issue:
+        #           - severity: error
+        #             code: unknown
+        #             details:
+        #               coding:
+        #                 - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
+        #                   version: '1'
+        #                   code: UNKNOWN_ERROR
+        #                   display: Unknown Error
+        #             diagnostics: "An unknown error occurred processing this request. Contact us for assistance diagnosing this issue: https://digital.nhs.uk/developer/help-and-support."
+
+        # "503":
+        #   description: |
+        #     The request timed out during processing. This does not imply the request has failed or been rejected. Error code: `SERVICE_UNAVAILABLE`.
+
+        #     Re-send the request after the time specified in the `Retry-After` header using the same `X-Request-ID` value.
+        #   headers:
+        #     RetryAfter:
+        #       $ref: 'components/schemas/RetryAfter.yaml'
+        #   content:
+        #     application/fhir+json:
+        #       schema:
+        #         $ref: 'components/schemas/OperationOutcome-2.yaml'
+        #       example:
+        #         resourceType: OperationOutcome
+        #         issue:
+        #           - severity: error
+        #             code: timeout
+        #             details:
+        #               coding:
+        #                 - system: 'https://fhir.nhs.uk/R4/CodeSystem/Spine-ErrorOrWarningCode'
+        #                   version: '1'
+        #                   code: SERVICE_UNAVAILABLE
+        #                   display: Service unavailable
+        #             diagnostics: "The downstream domain processing has not completed within the configured timeout period. Using the same 'X-Request-ID' header, retry your request after the time specified by the 'Retry-After' response header."
+
+  '/datasets/{id}':
+    get:
+      summary: Get data set details 
+      operationId:  get-datasets-id    
+      description: |
+
+        ## Overview
+        Use this endpoint to get data set details for a given data set persistent identifier.
+
+        ## Sandbox test scenarios
+        You can test the following scenarios in our sandbox environment:
+        
+        | Scenario                      | Request                                                              | Response                                   |
+        | ----------------------------- | -------------------------------------------------------------------- | ------------------------------------------ |
+        | Data set exists               | `id`=`dd5f0174-575f-4f4c-a4fc-b406aab953d9`                          | HTTP Status 200 with data set metadata in response body |
+        | Data set does not exist       | `id`= any other valid UUID                                           | HTTP Status 404 with problem description |
+
+
+        You can try out the sandbox using the 'Try this API' feature on this page.
+
+  
+      parameters:
+       - $ref: '#/components/parameters/ApiKey'      
+       - $ref: '#/components/parameters/CorrelationID'     
+       - $ref: '#/components/parameters/RequestID'         
+       - in: path
+         name: id
+         description: The persistent identifier of the data set.
+         schema:
+           type: string
+           format: uuid 
+           example: 'dd5f0174-575f-4f4c-a4fc-b406aab953d9'   
+         required: true              
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: components/schemas/pdc.dataset.schema.yaml
+              example:
+                $ref: components/examples/dataset-example-crd.json                
+
+        "4XX":
+          description: |
+            An error occurred as follows:
+            
+            | HTTP status | Error code                 | Description |
+            | ----------- | -------------------------- | --------------------------------------------- |
+            | 401         | ACCESS_DENIED              | Access token missing, invalid or expired, or calling application not configured for this operation. |
+            | 404         | RESOURCE_NOT_FOUND         | No dataset resources found. |
+            | 404         | INVALID_ENDPOINT_PATH      | Invalid endpoint path. |         
+            | 429         | TOO_MANY_REQUESTS          | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+
+          content:
+            application/fhir+json:
+              schema:
+                $ref: 'components/schemas/OperationOutcome-2.yaml'
+              example:
+                resourceType: OperationOutcome
+                issue:
+                  - severity: error
+                    code: structure
+                    details:
+                      coding:
+                        - system: 'https://fhir.nhs.uk/R4/CodeSystem/Spine-ErrorOrWarningCode'
+                          version: '1'
+                          code: ACCESS_DENIED
+                          display: access has been denied to process this request
+
+        "5XX":
+          description: |
+
+            A 5xx status code means the server has a problem. For more details on the most common 5xx status codes and their meanings see the [HTTP status codes](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes).
+
+        # "500":
+        #   description: Internal Server Error
+        #   content:
+        #     application/fhir+json:
+        #       schema:
+        #         $ref: components/schemas/OperationErrorOutcome.yaml
+        #       example:
+        #         resourceType: OperationOutcome
+        #         issue:
+        #           - severity: error
+        #             code: unknown
+        #             details:
+        #               coding:
+        #                 - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
+        #                   version: '1'
+        #                   code: UNKNOWN_ERROR
+        #                   display: Unknown Error
+        #             diagnostics: "An unknown error occurred processing this request. Contact us for assistance diagnosing this issue: https://digital.nhs.uk/developer/help-and-support."
+ 
+
+        # "503":
+        #   description: |
+        #     The request timed out during processing. This does not imply the request has failed or been rejected. Error code: `SERVICE_UNAVAILABLE`.
+
+        #     Re-send the request after the time specified in the `Retry-After` header using the same `X-Request-ID` value.
+        #   headers:
+        #     RetryAfter:
+        #       $ref: 'components/schemas/RetryAfter.yaml'
+        #   content:
+        #     application/fhir+json:
+        #       schema:
+        #         $ref: 'components/schemas/OperationOutcome-2.yaml'
+        #       example:
+        #         resourceType: OperationOutcome
+        #         issue:
+        #           - severity: error
+        #             code: timeout
+        #             details:
+        #               coding:
+        #                 - system: 'https://fhir.nhs.uk/R4/CodeSystem/Spine-ErrorOrWarningCode'
+        #                   version: '1'
+        #                   code: SERVICE_UNAVAILABLE
+        #                   display: Service unavailable
+        #             diagnostics: "The downstream domain processing has not completed within the configured timeout period. Using the same 'X-Request-ID' header, retry your request after the time specified by the 'Retry-After' response header."                    
+components:
+  parameters:                                                 
+    CorrelationID:
+      in: header
+      name: X-Correlation-ID
+      required: false
+      description: |
+        An optional ID which you can use to track transactions across multiple systems. It can take any value, but we recommend avoiding `.` characters.
+
+        Mirrored back in a response header.
+      schema:
+        type: string
+        example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
+    RequestID:
+      in: header
+      name: X-Request-ID
+      required: false
+      description: |
+        A globally unique identifier (GUID) for the request, which we use to de-duplicate repeated requests and to trace the request if you contact our helpdesk.
+
+        Must be a universally unique identifier (UUID) (ideally version 4).
+
+        Mirrored back in a response header.
+
+        If you re-send a failed request, use the same value in this header.
+      schema:
+        type: string
+        pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+        example: 60E0B220-8136-4CA5-AE46-1D97EF59D068
+    ApiKey:
+      in: header
+      name: apikey
+      description: API key to authenticate with.
+      schema:
+        type: string
+      required: true
