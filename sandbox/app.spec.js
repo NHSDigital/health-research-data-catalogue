@@ -40,7 +40,7 @@ describe("app handler tests", function () {
             .expect(200, {
                 status: "pass",
                 ping: "pong",
-                service: "health-research-data-catalogue",
+                service: "public-data-catalogue",
                 version: version_info
             })
             .expect("Content-Type", /json/, done);
@@ -52,7 +52,7 @@ describe("app handler tests", function () {
             .expect(200, {
                 status: "pass",
                 ping: "pong",
-                service: "health-research-data-catalogue",
+                service: "public-data-catalogue",
                 version: version_info
             })
             .expect("Content-Type", /json/, done);
@@ -64,4 +64,3 @@ describe("app handler tests", function () {
             .expect(200, done);
     });
 });
-
