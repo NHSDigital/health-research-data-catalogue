@@ -59,8 +59,8 @@
   <RouteRule name="NoRouteStatus">
     <Condition>(proxy.pathsuffix MatchesPath "/_status") and ((request.verb = "GET") or (request.verb = "HEAD"))</Condition>
   </RouteRule>
-  <RouteRule name="public-data-catalogue-target">
-    <TargetEndpoint>public-data-catalogue-target</TargetEndpoint>
+  <RouteRule name="health-research-data-catalogue-target">
+    <TargetEndpoint>health-research-data-catalogue-target</TargetEndpoint>
   </RouteRule>
   <DefaultFaultRule>
     <Step>
