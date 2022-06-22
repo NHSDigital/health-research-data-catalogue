@@ -9,7 +9,7 @@ const uuid = require('uuid');
 
 function setup(options) {
     options = options || {};
-    app.locals.app_name = options.APP_NAME || 'health-research-data-catalogue';
+    app.locals.app_name = options.APP_NAME || 'public-data-catalogue';
     app.locals.version_info = JSON.parse(options.VERSION_INFO || '{}');
     log.setLevel(options.LOG_LEVEL || "info");
 
@@ -127,7 +127,10 @@ app.get("/_ping", handlers.status);
 app.get("/_status", handlers.status);
 app.get("/health", handlers.status);
 app.all("/hello", handlers.hello);
-app.use(on_error)
+app.all("/datasets", handlers.datasets);
+app.all("/datasets/dd5f0174-575f-4f4c-a4fc-b406aab953d9", handlers.datasetsId);
+app.use("/datasets/", handlers.datasetsError);
+app.use(on_error);
 app.use(after_request);
 
 module.exports = {start: start, setup: setup};

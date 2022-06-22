@@ -1,22 +1,108 @@
 SERVICE_NAME: health-research-data-catalogue
-PRODUCT_DISPLAY_NAME: health-research-data-catalogue
-DESCRIPTION: example description
+PRODUCT_DISPLAY_NAME: Health Research Data Catalogue
+DESCRIPTION: Health Research Data Catalogue API
 APIGEE_ENVIRONMENTS:
   - name: internal-dev
     display_name: Internal Development
+    ratelimiting:
+      health-research-data-catalogue-internal-dev: # this controls the per-proxy rate limiting policies, AND MUST MATCH YOUR PROXY NAME
+        quota:
+          enabled: true # boolean, set to false to disable the policy entirely.
+          interval: 1 # number of timeunits to window over, non-zero positive int
+          limit: 300 # non-zero positive int
+          timeunit: minute # minute/hour
+        spikeArrest:
+          enabled: true # boolean, set to false to disable the policy entirely
+          ratelimit: 5ps # must end in pm/ps
+      app: # this controls the default per-app rate limiting policies
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false            
+  - name: internal-dev-sandbox
+    display_name: Internal Development Sandbox
+    # ratelimiting disabled for all sandbox env
+    ratelimiting:
+      health-research-data-catalogue-internal-dev-sandbox: # this controls the per-proxy rate limiting policies, AND MUST MATCH YOUR PROXY NAME
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false        
+      app: # this controls the default per-app rate limiting policies
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false                     
   - name: internal-qa
     display_name: Internal QA
+    ratelimiting:
+      health-research-data-catalogue-internal-qa: # this controls the per-proxy rate limiting policies, AND MUST MATCH YOUR PROXY NAME
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false        
+      app: # this controls the default per-app rate limiting policies
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false                
+  - name: internal-qa-sandbox
+    display_name: Internal QA Sandbox
+    ratelimiting:
+      health-research-data-catalogue-internal-qa-sandbox: # this controls the per-proxy rate limiting policies, AND MUST MATCH YOUR PROXY NAME
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false        
+      app: # this controls the default per-app rate limiting policies
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false                    
   - name: ref
     display_name: Reference
-# Enable environments when ready by uncommenting:
-  # - name: internal-dev-sandbox
-  #   display_name: Internal Development Sandbox
-  # - name: internal-qa-sandbox
-  #   display_name: Internal QA Sandbox
-  # - name: sandbox
-  #   display_name: Sandbox
-  # - name: int
-  #   display_name: Integration Testing
+    ratelimiting:
+      health-research-data-catalogue-internal-qa: # this controls the per-proxy rate limiting policies, AND MUST MATCH YOUR PROXY NAME
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false        
+      app: # this controls the default per-app rate limiting policies
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false                    
+  - name: sandbox
+    display_name: Sandbox
+    ratelimiting:
+      health-research-data-catalogue-sandbox: # this controls the per-proxy rate limiting policies, AND MUST MATCH YOUR PROXY NAME
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false        
+      app: # this controls the default per-app rate limiting policies
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false                 
+# Enable int environment when ready by uncommenting:
+  - name: int
+    display_name: Integration Testing
+    ratelimiting:
+      health-research-data-catalogue-int: # this controls the per-proxy rate limiting policies, AND MUST MATCH YOUR PROXY NAME
+        quota:
+          enabled: true # boolean, set to false to disable the policy entirely.
+          interval: 1 # number of timeunits to window over, non-zero positive int
+          limit: 300 # non-zero positive int
+          timeunit: minute # minute/hour
+        spikeArrest:
+          enabled: true # boolean, set to false to disable the policy entirely
+          ratelimit: 5ps # must end in pm/ps
+      app: # this controls the default per-app rate limiting policies
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false   
 ---
 meta:
   api:
@@ -30,6 +116,7 @@ apigee:
 {% for ENV in APIGEE_ENVIRONMENTS %}
 {% set TITLE = PRODUCT_DISPLAY_NAME + ' (' + ENV.display_name + ' Environment)' %}
 {% set NAME = SERVICE_NAME + '-' + ENV.name %}
+{% set PORTAL_VISIBILITY = not ENV.name.endswith("sandbox") %}
   - name: {{ ENV.name }}
     products:
       - name: {{ NAME }}
@@ -37,33 +124,24 @@ apigee:
         attributes:
           - name: access
             value: public
-            # For a parameterised example of rate limiting per environment,
-            # see https://github.com/NHSDigital/personal-demographics-service-api/blob/master/manifest_template.yml
           - name: ratelimiting
-            value:
-              {{ NAME }}:
-                quota:
-                  enabled: true
-                  limit: 300
-                  interval: 1
-                  timeunit: minute
-                spikeArrest:
-                  enabled: true
-                  ratelimit: 600pm # 10 requests per second
-              app:
-                quota:
-                  enabled: false
-                spikeArrest:
-                  enabled: false
+            value: {{ ENV.ratelimiting }}
+          # OOTB config commented out
+          # - name: ratelimit
+          #   value: 300pm          
         description: {{ DESCRIPTION }}
         displayName: {{ TITLE }}
         environments: [ {{ ENV.name }} ]
         proxies:
-          - {{ NAME }}
+          - {{ SERVICE_NAME }}-{{ ENV.name }}
           - identity-service-{{ ENV.name }}
         scopes:
           - 'urn:nhsd:apim:app:level3:{{ SERVICE_NAME }}'
           - 'urn:nhsd:apim:user-nhs-id:aal3:{{ SERVICE_NAME }}'
+        # OOTB config commented out
+        # quota: '300'
+        # quotaInterval: '1'
+        # quotaTimeUnit: minute
     specs:
       - name: {{ NAME }}
         path: {{ SERVICE_NAME }}.json
@@ -73,6 +151,6 @@ apigee:
         description: {{ DESCRIPTION }}
         requireCallbackUrl: false
         title: {{ TITLE }}
-        visibility: false
+        visibility: {{ PORTAL_VISIBILITY }}
         specId: {{ NAME }}
 {% endfor %}

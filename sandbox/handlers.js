@@ -1,4 +1,7 @@
 "use strict";
+const getResponseEndpoint1 = require("./responses/dataset-list-sandbox.json");
+const getResponseEndpoint2 = require("./responses/dataset-example-crd-sandbox.json");
+const errResponse2 = require("./responses/OperationOutcome-RESOURCE_NOT_FOUND.json");
 
 const log = require("loglevel");
 
@@ -62,7 +65,59 @@ async function hello(req, res, next) {
     next();
 }
 
+
+async function datasets(req, res, next) {
+
+    write_log(res, "info", {
+        message: "datasets",
+        req: {
+            path: req.path,
+            query: req.query,
+            headers: req.rawHeaders
+        }
+    });
+
+    res.json(getResponseEndpoint1);
+    res.end();
+    next();
+}
+
+async function datasetsId(req, res, next) {
+
+    write_log(res, "info", {
+        message: "datasetsId",
+        req: {
+            path: req.path,
+            query: req.query,
+            headers: req.rawHeaders
+        }
+    });
+
+    res.json(getResponseEndpoint2);
+    res.end();
+    next();
+}
+
+
+async function datasetsError(req, res, next) {
+
+    write_log(res, "info", {
+        message: "datasetsError",
+        req: {
+            path: req.path,
+            query: req.query,
+            headers: req.rawHeaders,
+        }
+    });
+        res.status(404).json(errResponse2);
+    res.end();
+    next();
+}
+
 module.exports = {
     status: status,
-    hello: hello
+    hello: hello,
+    datasets: datasets,
+    datasetsId: datasetsId,
+    datasetsError: datasetsError
 };
