@@ -1,0 +1,4 @@
+<APIProxy name="hrdc">
+  <!-- This is the root of the application -->
+  <Description>"health-research-data-catalogue"</Description>
+</APIProxy>

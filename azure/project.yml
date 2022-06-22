@@ -1,0 +1,4 @@
+variables:
+  service_name: health-research-data-catalogue
+  short_service_name: hrdc
+  service_base_path: health-research-data-catalogue
