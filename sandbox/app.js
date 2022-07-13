@@ -9,7 +9,7 @@ const uuid = require('uuid');
 
 function setup(options) {
     options = options || {};
-    app.locals.app_name = options.APP_NAME || 'public-data-catalogue';
+    app.locals.app_name = options.APP_NAME || 'health-research-data-catalogue';
     app.locals.version_info = JSON.parse(options.VERSION_INFO || '{}');
     log.setLevel(options.LOG_LEVEL || "info");
 

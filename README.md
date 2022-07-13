@@ -1,8 +1,8 @@
 # health-research-data-catalogue
 
-![Build](https://github.com/NHSDigital/public-data-catalogue/workflows/Build/badge.svg?branch=master)
+![Build](https://github.com/NHSDigital/health-research-data-catalogue/workflows/Build/badge.svg?branch=master)
 
-This is a RESTful JSON API specification for the *Health Data Research Catalogue* API.
+This is a RESTful JSON API specification for the *Health Research Data Catalogue* API.
 
 * `specification/` This [Open API Specification](https://swagger.io/docs/specification/about/) describes the endpoints, methods and messages exchanged by the API. Use it to generate interactive documentation; the contract between the API and its consumers.
 * `sandbox/` This NodeJS application implements a mock implementation of the service. Use it as a back-end service to the interactive documentation to illustrate interactions and concepts. It is not intended to provide an exhaustive/faithful environment suitable for full development and testing.
@@ -12,7 +12,7 @@ This is a RESTful JSON API specification for the *Health Data Research Catalogue
 Consumers of the API will find developer documentation on the [NHS Digital Developer Hub](https://digital.nhs.uk/developer).
 
 ## Contributing
-Contributions to this project are welcome from anyone, providing that they conform to the [guidelines for contribution](https://github.com/NHSDigital/public-data-catalogue/blob/master/CONTRIBUTING.md) and the [community code of conduct](https://github.com/NHSDigital/public-data-catalogue/blob/master/CODE_OF_CONDUCT.md).
+Contributions to this project are welcome from anyone, providing that they conform to the [guidelines for contribution](https://github.com/NHSDigital/health-research-data-catalogue/blob/master/CONTRIBUTING.md) and the [community code of conduct](https://github.com/NHSDigital/health-research-data-catalogue/blob/master/CODE_OF_CONDUCT.md).
 
 ### Licensing
 This code is dual licensed under the MIT license and the OGL (Open Government License). Any new work added to this repository must conform to the conditions of these licenses. In particular this means that this project may not depend on GPL-licensed or AGPL-licensed libraries, as these would violate the terms of those libraries' licenses.
@@ -93,8 +93,8 @@ The Apigee portal will not automatically pull examples from schemas, you must sp
 Successful deployment of the API Proxy requires:
 
  1. *Target Servers*:
-    1. `public-research-data-catalogue-api`: Gateway to HRDC DEV API
-    2. `public-research-data-catalogue-api--int` Gateway to HRDC INT API
+    1. `health-research-data-catalogue-api`: Gateway to HRDC DEV API
+    2. `health-research-data-catalogue-api--int` Gateway to HRDC INT API
 
 :bulb: For Sandbox-running environments (`test`) these need to be present for successful deployment but can be set to empty/dummy values.
 
