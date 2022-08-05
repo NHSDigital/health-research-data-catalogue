@@ -339,7 +339,7 @@ paths:
                           # "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/source"               
                           example: Other
               example:  
-                $ref: components/examples/dataset-list-example4.json            
+                $ref: components/examples/dataset-list-example.json            
         "4XX":
           description: |
             An error occurred as follows:
