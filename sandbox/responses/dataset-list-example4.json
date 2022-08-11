@@ -1,0 +1,82 @@
+{
+    "total": "7",
+    "items": [
+        {
+            "@schema": "https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json",
+            "persistentId": "tt6gh174-575f-4f4c-a4fc-b406aabj9766",
+            "name": "Hospital Episode Statistics Admitted Patient Care",
+            "description": "Hospital Episode Statistics (HES) is a database containing details of all admissions, A and E attendances and outpatient appointments at NHS hospitals in England. Records in the HES Admitted Patient Care (APC) database are called ‘hospital episodes’, and each hospital episode relates to a period of care for a patient under a single consultant within one hospital provider. A stay in hospital from admission to discharge is called a ‘spell’ and can be made up of one or more episodes of care. HES APC looks at completed episodes, called Finished Admission Episodes (FAEs), which is the first episode in a spell of care, and Finished Consultant Episodes (FCEs), which is a continuous period of care under one consultant. Initially this data is collected during a patient's time at hospital as part of the Commissioning Data Set (CDS). This is submitted to NHS Digital for processing and is returned to healthcare providers as the Secondary Uses Service (SUS) data set and includes information relating to payment for activity undertaken. It allows hospitals to be paid for the care they deliver. This same data can also be processed and used for non-clinical purposes, such as research and planning health services. Because these uses are not to do with direct patient care, they are called 'secondary uses'. This is the HES data set. HES data covers all NHS Clinical Commissioning Groups (CCGs) in England, including: private patients treated in NHS hospitals patients resident outside of England care delivered by treatment centres (including those in the independent sector) funded by the NHS Each HES record contains a wide range of information about an individual patient admitted to an NHS hospital, including: clinical information about diagnoses and operations patient information, such as age group, gender and ethnicity administrative information, such as dates and methods of admission and discharge geographical information such as where patients are treated and the area where they live We apply a strict statistical disclosure control in accordance with the NHS Digital protocol, to all published HES data. This suppresses small numbers to stop people identifying themselves and others, to ensure that patient confidentiality is maintained. https://digital.nhs.uk/data-and-information/publications/statistical/hospital-admitted-patient-care-activity",
+            "version": "2.0.0",
+            "self": "https://hdr.dev.dataproducts.nhs.uk/datasets/tt6gh174-575f-4f4c-a4fc-b406aabj9766",
+            "issued": "2021-06-18T13:59:28.735Z",
+            "modified": "2022-07-27T16:53:20.845Z",
+            "source": ""
+        },
+        {
+            "@schema": "https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json",
+            "persistentId": "tt6gh174-575f-4f4c-a4fc-b406aabj9767",
+            "name": "GPES Data for Pandemic Planning and Research (COVID-19)",
+            "description": "Coronavirus (COVID-19) has led to increased demand on general practices, including an increasing number of requests to provide patient data to inform planning and support vital research on the cause, effects, treatments and outcomes for patients of the virus. To support the response to the coronavirus outbreak, NHS Digital has been legally directed to collect and analyse healthcare information about patients, including from their GP record, for the duration of the coronavirus emergency period, under the COVID-19 Public Health Directions 2020 (COVID-19 Direction). All GP practices in England are legally required to share data with NHS Digital for this purpose under the Health and Social Care Act 2012. More information about this requirement is contained in the Data Provision Notice issued by NHS Digital to GP practices. This collection will reduce burden on general practices, allowing them to focus on patient care and support the coronavirus response.\n\nthis is a new paragraph.",
+            "version": "2.0.0",
+            "self": "https://hdr.dev.dataproducts.nhs.uk/datasets/tt6gh174-575f-4f4c-a4fc-b406aabj9767",
+            "issued": "2021-06-16T18:52:18.812Z",
+            "modified": "2022-07-27T16:41:58.662Z",
+            "source": ""
+        },
+        {
+            "@schema": "https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json",
+            "persistentId": "tt6gh174-575f-4f4c-a4fc-b406aabj9768",
+            "name": "Medicines dispensed in Primary Care (NHSBSA data)",
+            "description": "NHS Digital has established a monthly collection of patient-level data about medicines dispensed and claimed for in community settings (predominantly community pharmacy). The data is taken from electronic and paper prescriptions submitted to the NHS Business Services Authority (NHSBSA) for reimbursement each month. The data comprises prescriptions for medicines that are dispensed or supplied by community pharmacists, appliance contractors and dispensing doctors and prescriptions submitted by prescribing doctors in England for medicines personally administered in England.",
+            "version": "1.0.0",
+            "self": "https://hdr.dev.dataproducts.nhs.uk/datasets/tt6gh174-575f-4f4c-a4fc-b406aabj9768",
+            "issued": "2021-06-17T15:17:27.327Z",
+            "modified": "2022-07-18T08:28:18.387Z",
+            "source": ""
+        },
+        {
+            "@schema": "https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json",
+            "persistentId": "tt6gh174-575f-4f4c-a4fc-b406aabj9764",
+            "name": "Community Services Data Set",
+            "description": "Providers of publicly-funded community services are legally mandated to collect and submit community health data, as set out by the Health and Social Care Act 2012. The Community Services Data Set (CSDS) expands the scope of the Children and Young People's Health Services Data Set (CYPHS) data set, by removing the 0-18 age restriction. The CSDS supersedes the CYPHS data set, to allow adult community data to be submitted. The structure and content of the CSDS remains the same as the CYPHS data set. The Community Information Data Set (CIDS) has been retired, to remove the need for a separate local collection and reduce burden on providers. Reports from the CSDS are available to download from the Community Services Data Set reports webpage.\n\n• personal and demographic\n\n• breastfeeding and nutrition\n\n• care event and screening activity",
+            "version": "2.0.0",
+            "self": "https://hdr.dev.dataproducts.nhs.uk/datasets/tt6gh174-575f-4f4c-a4fc-b406aabj9764",
+            "issued": "2021-07-21T15:01:53.062Z",
+            "modified": "2022-08-04T13:12:31.855Z",
+            "source": ""
+        },
+        {
+            "@schema": "https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json",
+            "persistentId": "tt6gh174-575f-4f4c-a4fc-b406aabj9765",
+            "name": "Civil Registration - Deaths",
+            "description": "Deaths registration data (all deaths in England and Wales) collected from The Registrar General for England and Wales. Record-level patient data set, where a record represents one death registration. The data are collected at source from Local Registry offices at the point of death registration. The data are collated nationally by the Register General before being passed to the Office for National Statistics (ONS), for use in statistics and coding. Coding includes such things cause of death coding using the International Classifications of Diseases (ICD) coding system, attributing socio-economic code classifications based on occupation. ONS maintains its own version of the data set for its use in statistics. The Civil Registration of Deaths data contains 14 million unique registrations since 1993 onwards, increasing yearly. Average 500,000 - 600,000 new death registrations yearly. Records cover all deaths registered in England & Wales. ICD coding is 9th and 10th. https://digital.nhs.uk/services/data-access-request-service-dars.\n\nTimescales for dissemination can be found under 'Our Service Levels' at the following link: https://digital.nhs.uk/services/data-access-request-service-dars/data-access-request-service-dars-process.",
+            "version": "1.0.2",
+            "self": "https://hdr.dev.dataproducts.nhs.uk/datasets/tt6gh174-575f-4f4c-a4fc-b406aabj9765",
+            "issued": "2022-07-12T11:34:05.538Z",
+            "modified": "2022-08-04T15:56:42.204Z",
+            "source": ""
+        },
+        {
+            "@schema": "https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json",
+            "persistentId": "tt6gh174-575f-4f4c-a4fc-b406aabj9769",
+            "name": "Pillar 2 - Covid-19 UK Non-hospital Antigen Testing Results",
+            "description": "COVID-19 Key Worker Testing Results data is required by NHS Digital to support COVID-19 requests for linkage, analysis and dissemination to other organisations who require the data in a timely manner. These requests are often urgent and in support of direct care and service monitoring, planning and research. These are all functions that NHS Digital have been asked to deliver as a national resource in response to COVID-19, through the recent direction from the SoS. Antigen test results relating to subjects tested within the following: • Drive through test centre • Home test The Key Worker Testing results relate to a subject who has been tested. This may be a key worker or a symptomatic household member. The dataset will be composed of: • Patient identity and contact details • Testing centre and laboratory details • Test results • Test kit types (manufacturer) • Key worker indicator and employer organisation The data cover UK and is collected under SofS Covid Direction under s254 of the HSCA 2012 and s255 requests from devolved administrations for Scotland, Northern Ireland and Wales. Original scope was Key workers but this has now been expanded to include all pillar 2 antigen testing, which is Commercial Antigen testing for citizens. Covers npex.npex, npex.randox, Legacy, deloitte and BSA flows. Covers England, NI, Scotland and Wales. \\[Originally it was just some Welsh patient data if they were tested in England, Scotland, NI etc, but scope has changed\\].\n\nTimescales for dissemination can be found under 'Our Service Levels' at the following link: [https://digital.nhs.uk/services/data-access-request-service-dars/data-access-request-service-dars-process](https://digital.nhs.uk/services/data-access-request-service-dars/data-access-request-service-dars-process)",
+            "version": "1.2.3",
+            "self": "https://hdr.dev.dataproducts.nhs.uk/datasets/CV19-12345",
+            "issued": "2022-07-12T11:34:04.498Z",
+            "modified": "2022-07-27T16:58:29.500Z",
+            "source": ""
+        },
+        {
+            "@schema": "https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json",
+            "persistentId": "tt6gh174-575f-4f4c-a4fc-b406aabj9769",
+            "name": "Pillar 2 - Covid-19 UK Non-hospital Antigen Testing Results",
+            "description": "COVID-19 Key Worker Testing Results data is required by NHS Digital to support COVID-19 requests for linkage, analysis and dissemination to other organisations who require the data in a timely manner. These requests are often urgent and in support of direct care and service monitoring, planning and research. These are all functions that NHS Digital have been asked to deliver as a national resource in response to COVID-19, through the recent direction from the SoS. Antigen test results relating to subjects tested within the following: • Drive through test centre • Home test The Key Worker Testing results relate to a subject who has been tested. This may be a key worker or a symptomatic household member. The dataset will be composed of: • Patient identity and contact details • Testing centre and laboratory details • Test results • Test kit types (manufacturer) • Key worker indicator and employer organisation The data cover UK and is collected under SofS Covid Direction under s254 of the HSCA 2012 and s255 requests from devolved administrations for Scotland, Northern Ireland and Wales. Original scope was Key workers but this has now been expanded to include all pillar 2 antigen testing, which is Commercial Antigen testing for citizens. Covers npex.npex, npex.randox, Legacy, deloitte and BSA flows. Covers England, NI, Scotland and Wales. \\[Originally it was just some Welsh patient data if they were tested in England, Scotland, NI etc, but scope has changed\\].\n\nTimescales for dissemination can be found under 'Our Service Levels' at the following link: [https://digital.nhs.uk/services/data-access-request-service-dars/data-access-request-service-dars-process](https://digital.nhs.uk/services/data-access-request-service-dars/data-access-request-service-dars-process)",
+            "version": "1.0.2",
+            "self": "https://hdr.dev.dataproducts.nhs.uk/datasets/CV19-67890",
+            "issued": "2022-07-12T11:34:05.259Z",
+            "modified": "2022-07-27T16:59:38.784Z",
+            "source": ""
+        }
+    ]
+}
