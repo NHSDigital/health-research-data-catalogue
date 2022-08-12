@@ -1,21 +1,20 @@
 {
-    "identifier": "dd5f0174-575f-4f4c-a4fc-b406aab953d9",
-    "version": "1.0.1",
+    "identifier": "80cbda88-dc12-4191-9a8e-f8cf2fdc29e8",
+    "version": "1.0.2",
     "revisions": [
         {
-            "version": "1.0.1",
-            "url": ""
+            "version": "1.0.2",
+            "url": "https://internal-dev.api.service.nhs.uk/health-research-data-catalogue/datasetrevisions/80cbda88-dc12-4191-9a8e-f8cf2fdc29e8"
         }
     ],
-    "issued": "2021-06-09T17:52:50.898+0000",
-    "modified": "2022-05-26T14:40:00.851+0000",
+    "issued": "2022-07-12T11:34:05.538Z",
+    "modified": "2022-08-04T15:56:42.204Z",
     "summary": {
         "title": "Civil Registration - Deaths",
-        "doiName": "",
         "abstract": "Deaths registration data (all deaths in England and Wales) collected from The Registrar General for England and Wales. Record-level person data set, where a record represents one death registration.",
         "publisher": {
-            "name": "NHS DIGITRIALS",
-            "HDR UK Publisher Group": "Hub",
+            "name": "NHS DIGITAL",
+            "memberOf": "ALLIANCE",
             "contactPoint": "enquiries@nhsdigital.nhs.uk"
         },
         "contactPoint": "enquiries@nhsdigital.nhs.uk",
@@ -24,16 +23,15 @@
         ]
     },
     "documentation": {
-        "description": "Deaths registration data (all deaths in England and Wales) collected from The Registrar General for England and Wales. Record-level patient data set, where a record represents one death registration. The data are collected at source from Local Registry offices at the point of death registration. The data are collated nationally by the Register General before being passed to the Office for National Statistics (ONS), for use in statistics and coding. Coding includes such things cause of death coding using the International Classifications of Diseases (ICD) coding system, attributing socio-economic code classifications based on occupation. ONS maintains its own version of the data set for its use in statistics. The Civil Registration of Deaths data contains 14 million unique registrations since 1993 onwards, increasing yearly. Average 500,000 - 600,000 new death registrations yearly. Records cover all deaths registered in England &amp; Wales.\nICD coding is 9th and 10th.\n\nhttps://digital.nhs.uk/services/data-access-request-service-dars",
-        "associatedMedia": [
-            "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths, https://digital.nhs.uk/coronavirus/coronavirus-data-services-updates/mortality-data-review"
-        ],
+        "description": "Deaths registration data (all deaths in England and Wales) collected from The Registrar General for England and Wales. Record-level patient data set, where a record represents one death registration. The data are collected at source from Local Registry offices at the point of death registration. The data are collated nationally by the Register General before being passed to the Office for National Statistics (ONS), for use in statistics and coding. Coding includes such things cause of death coding using the International Classifications of Diseases (ICD) coding system, attributing socio-economic code classifications based on occupation. ONS maintains its own version of the data set for its use in statistics. The Civil Registration of Deaths data contains 14 million unique registrations since 1993 onwards, increasing yearly. Average 500,000 - 600,000 new death registrations yearly. Records cover all deaths registered in England & Wales. ICD coding is 9th and 10th. https://digital.nhs.uk/services/data-access-request-service-dars.\n\nTimescales for dissemination can be found under 'Our Service Levels' at the following link: https://digital.nhs.uk/services/data-access-request-service-dars/data-access-request-service-dars-process.",
+        "associatedMedia": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths, https://digital.nhs.uk/coronavirus/coronavirus-data-services-updates/mortality-data-review",
         "isPartOf": "NOT APPLICABLE"
     },
     "coverage": {
         "followup": "OTHER",
         "spatial": [
-            "England & Wales"
+            "https://www.geonames.org/6269131/england.html",
+            "https://www.geonames.org/2634895/wales.html"
         ],
         "physicalSampleAvailability": [
             "NOT AVAILABLE"
@@ -43,17 +41,18 @@
     },
     "provenance": {
         "temporal": {
-            "endDate": "",
+            "endDate": "2022-08-31",
             "timeLag": "1-2 WEEKS",
-            "distributionReleaseDate": "",
             "accrualPeriodicity": "CONTINUOUS",
-            "startDate": "725846400000"
+            "startDate": "1993-01-01"
         },
         "origin": {
             "purpose": [
                 "ADMINISTRATIVE"
             ],
-            "source": "Other",
+            "source": [
+                "OTHER"
+            ],
             "collectionSituation": [
                 "OTHER"
             ]
@@ -65,17 +64,20 @@
                 "en"
             ],
             "vocabularyEncodingScheme": [
-                "Other: OTHER: Please indicate if there is another standard that you are using and discuss with the DA team.",
-                "ICD9: https://www.cdc.gov/nchs/icd/icd9.htm",
-                "ICD10: https://www.who.int/classifications/icd/icdonlineversions/en/",
-                "ODS: https://digital.nhs.uk/services/organisation-data-service",
-                "NHS National Codes: https://www.datadictionary.nhs.uk/"
+                "OTHER",
+                "ICD10",
+                "NHS NATIONAL CODES",
+                "ODS",
+                "ICD9"
             ],
             "format": [
                 "CSV",
                 "Text"
             ],
-            "conformsTo": "NHS Data Dictionary: https://www.datadictionary.nhs.uk/"
+            "conformsTo": [
+                "CDISC",
+                "NHS DATA DICTIONARY"
+            ]
         },
         "usage": {
             "dataUseLimitation": "No Restriction",
@@ -83,37 +85,48 @@
                 "NHS Digital"
             ],
             "dataUseRequirements": [
-                "USER SPECIFIC RESTRICTION",
+                "INSTITUTION SPECIFIC RESTRICTIONS",
+                "PROJECT SPECIFIC RESTRICTIONS",
                 "TIME LIMIT ON USE",
-                "ETHICS APPROVAL REQUIRED"
+                "ETHICS APPROVAL REQUIRED",
+                "USER SPECIFIC RESTRICTION"
             ],
-            "isReferencedBy": [],
             "investigations": [
                 "https://digital.nhs.uk/services/data-access-request-service-dars/register-of-approved-data-releases"
             ]
         },
         "access": {
-            "dataController": "NHS Digital",
+            "dataController": "Department of Health and Social Care",
             "jurisdiction": [
                 "GB-EAW"
             ],
-            "dataProcessor": "NOT APPLICABLE",
-            "accessService": "Death registrations data are available via a range of services which can be applied for through the Data Access Request Service (DARS). This includes via an extract, through the Data Access Environment (DAE) which also underpins the Trusted Research Environment.\n\n2-6 MONTHS. PLEASE NOTE WE WILL ONLY PAUSE THE ELAPSED TIME WHEN WE REQUIRE FURTHER DETAIL OR APPROVALS FROM AN EXTERNAL PROVIDER ARE REQUIRED.",
+            "dataProcessor": "NHS Digital",
+            "accessService": "Death registrations data are available via a range of services which can be applied for through the Data Access Request Service (DARS). This includes via an extract, through the Data Access Environment (DAE) which also underpins the Trusted Research Environment. 2-6 MONTHS. PLEASE NOTE WE WILL ONLY PAUSE THE ELAPSED TIME WHEN WE REQUIRE FURTHER DETAIL OR APPROVALS FROM AN EXTERNAL PROVIDER ARE REQUIRED.",
             "accessRights": [
                 "https://digital.nhs.uk/services/data-access-request-service-dars"
             ],
             "accessRequestCost": "https://digital.nhs.uk/services/data-access-request-service-dars/data-access-request-service-dars-charges",
-            "deliveryLeadTime": "2-6 MONTHS"
+            "deliveryLeadTime": "OTHER"
         }
     },
     "enrichmentAndLinkage": {
-        "tools": [],
+        "tools": [
+            "https://digital.nhs.uk/about-nhs-digital/our-work/keeping-patient-data-safe/gdpr/gdpr-register/gdpr-information-for-the-national-back-office/birth-and-death-registration-indexes-gdpr-information"
+        ],
         "qualifiedRelation": [
-            "Dataset linkable to other person level datasets via master data service, Linked data minimum example: NHS NUMBER + (DOB, GENDER, NAMES, POSTCODE, ADDRESS), Linked data minimum example 2: DOB + NAMES + (GENDER, POSTCODE, ADDRESS), MPS link https://digital.nhs.uk/services/master-person-service#:~:text=The%20Master%20Person%20Service%20(MPS)%20helps%20us%20increase%20the%20amount,various%20systems%20around%20the%20country."
+            "https://digital.nhs.uk/services/data-access-request-service-dars/register-of-approved-data-releases"
         ],
         "derivation": [
-            "Deaths (Parent), HES-ONS/Civil Reg Deaths Secondary Care Cut (Child), SHMI (Grandchild), Primary Care Mortality Data (Child)"
+            "Data will be minimised as appropriate relative to the data access application"
         ]
     },
-    "observations": []
+    "observations": [
+        {
+            "observedNode": "EVENTS",
+            "measuredValue": 14900000,
+            "disambiguatingDescription": "Number of unique death registrations since 1993 in england and Wales",
+            "observationDate": "2021-01-15",
+            "measuredProperty": "Count"
+        }
+    ]
 }

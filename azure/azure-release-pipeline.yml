@@ -44,6 +44,8 @@ extends:
         post_deploy:
           - template: ./templates/run-smoke-tests.yml          
       - environment: internal-qa
+        jinja_templates:
+          HRDC_TARGET_SERVER: health-research-data-catalogue-api--qa     
         post_deploy:
           - template: ./templates/run-smoke-tests.yml
       - environment: internal-qa-sandbox
