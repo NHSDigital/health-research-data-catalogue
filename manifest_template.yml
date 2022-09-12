@@ -107,6 +107,24 @@ APIGEE_ENVIRONMENTS:
           enabled: false
         spikeArrest:
           enabled: false   
+  - name: prod
+    approval_type: manual
+    display_name: Production
+    ratelimiting:
+      health-research-data-catalogue-prod: # this controls the per-proxy rate limiting policies, AND MUST MATCH YOUR PROXY NAME
+        quota:
+          enabled: true # boolean, set to false to disable the policy entirely.
+          interval: 1 # number of timeunits to window over, non-zero positive int
+          limit: 300 # non-zero positive int
+          timeunit: minute # minute/hour
+        spikeArrest:
+          enabled: true # boolean, set to false to disable the policy entirely
+          ratelimit: 5ps # must end in pm/ps
+      app: # this controls the default per-app rate limiting policies
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false             
 ---
 meta:
   api:
