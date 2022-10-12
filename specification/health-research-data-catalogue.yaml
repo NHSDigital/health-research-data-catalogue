@@ -36,13 +36,17 @@ info:
     ## API status and roadmap
     This API is initially for use by Health Data Research (HDR) UK developers with other use cases to follow later.
 
-    This API is in [alpha](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#api-status), meaning:
+    This API is in [private beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#api-status), meaning:
     - the API is available in our sandbox and integration test environments
-    - the API is not yet available for production use
+    - the API is available in production for private beta participants
     - we might make breaking changes, but only if we cannot avoid it, and we'll give advance notice
 
     To see our roadmap, or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/?order=popular&filter=all&tag=health-research-data-api#controls).
     If you have any other queries, please [contact us](https://digital.nhs.uk/developer/help-and-support).
+
+    ## Service level
+    This API is a bronze service, meaning it is operational and supported only during business hours (8am to 6pm), Monday to Friday excluding bank holidays.
+    For more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).
 
     ## Technology
     This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest-apis). 
@@ -69,7 +73,7 @@ info:
     | ---------------------------------------|-----------------------------------------------------|
     | Sandbox                                | `https://sandbox.api.service.nhs.uk/health-research-data-catalogue`|
     | Integration test                       | `https://int.api.service.nhs.uk/health-research-data-catalogue`    |
-    | Production                             | Not yet available                                         |
+    | Production                             | `https://api.service.nhs.uk/health-research-data-catalogue`                                           |
     
     ### Sandbox testing
     Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing):
@@ -88,11 +92,15 @@ info:
     
     For more details see [integration testing with our RESTful APIs](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing-with-our-restful-apis).
     
- 
     ## Onboarding
     You need to get your software approved by us before it can go live with this API. We call this onboarding. The onboarding process can sometimes be quite long, so it’s worth planning well ahead.
 
-    More details on the onboarding process to follow.
+    This API uses our online digital onboarding process.
+    
+    As part of this process, you need to demonstrate your technical conformance to the requirements for this API. 
+
+    To get started, see [digital onboarding](https://digital.nhs.uk/developer/guides-and-documentation/digital-onboarding). 
+
   contact:
     name: Health Research Data Catalogue API Support
     url: 'https://digital.nhs.uk/developer/help-and-support'
@@ -101,7 +109,9 @@ servers:
   - url: 'https://sandbox.api.service.nhs.uk/health-research-data-catalogue'
     description: Sandbox environment
   - url: 'https://int.api.service.nhs.uk/health-research-data-catalogue'
-    description: Integration test environment.   
+    description: Integration test environment.  
+  - url: 'https://api.service.nhs.uk/health-research-data-catalogue'
+    description: Production environment. 
 x-spec-publication:
   try-this-api:
     disabled: false
@@ -149,25 +159,6 @@ paths:
        - $ref: '#/components/parameters/ApiKey'      
        - $ref: '#/components/parameters/CorrelationID'     
        - $ref: '#/components/parameters/RequestID'                 
-       # - in: query
-       #   name: q
-       #   description: query
-       #   schema:
-       #     type: string  
-#        - in: query
-#          name: offset
-#          description: The first result to retrieve. If not set (offset = 0), results will be retrieved starting from row 0.
-#          schema:
-#            type: integer
-#            format: int32
-# #           default: "0"                
-#        - in: query
-#          name: limit
-#          description: The maximum number of results to retrieve. If not set (limit = 0), the default limit will be used.
-#          schema:
-#            type: integer
-#            format: int32
-# #           default: "0"       
       responses:
         '200':
           description: OK
@@ -186,43 +177,6 @@ paths:
                     # title: Total number of matches
                     description: The total number of resources that match the request.
                     minimum: 1
-                # type: object
-                # properties:
-                #   query:
-                #     type: object
-                #     properties:
-                #       # q:
-                #       #   type: string
-                #       #   description: TBC
-                #       #   example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
-                #       total:
-                #         type: string
-                #         example: 181
-                      # limit:
-                      #   type: string
-                      #   description: The maximum number of results to retrieve
-                      #   example: 1000
-                      # offset:
-                      #   type: string
-                      #   description: The first result to retrieve
-                      #   example: 0
-                  # '@schema':    
-                  #   type: object
-                  #   properties:
-                  #       type:
-                  #         type: string
-                  #         description: JSON document type
-                  #         example: Dataset
-                  #       version:
-                  #         type: string 
-                  #         description: Dataset schema version
-                  #         "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/semver" 
-                  #       url: 
-                  #         type: string
-                  #         description: Dataset URL
-                  #         # anyOf:
-                  #         # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/uuidv4"
-                  #         "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/url"
                   items:
                     type: array
                     # title: Items in the container object
@@ -241,49 +195,11 @@ paths:
                       - modified
                       - source
                       properties:
-                        # '@schema':    
-                        #   type: object
-                        #   # title: JSON Schema conformance
-                        #   description: JSON Schema specification that summary dataset resource (item) conforms to.
-                        #   required:
-                        #   - type
-                        #   - url
-                        #   properties:
-                        #     type:
-                        #       type: string
-                        #       # title: JSON document type
-                        #       description: JSON document type. The JSON dataset is a JSON document, which includes descriptive metadata.
-                        #       example: Dataset
-                        #     # version:
-                        #     #   type: string 
-                        #     #   description: Dataset schema version
-                        #     #   "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/semver" 
-                        #     url: 
-                        #       type: string
-                        #       # title: Dataset schema URL
-                        #       description: Dataset schema URL resolves to version of conformant JSON schema.
-                        #       example: https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json
-                        #       # oneOf:
-                        #       # # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/uuidv4"
-                        #       # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/url"
                         '@schema':
                           type: string
                           format: uri
                           description: JSON Schema specification that summary dataset resource (item) conforms to.
                           example: https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json
-                          # description: HDR UK Dataset schema
-                          # example: https://hdruk.github.io/schemata/schema/dataset/latest/dataset.schema.json                          
-                        # type:
-                        #   type: string
-                        #   description: JSON document type
-                        #   example: Dataset
-                        # identifier:
-                        #   type: string
-                        #   title: Dataset resource identifier
-                        #   description: Dataset resource identifier
-                        #   anyOf:
-                        #   - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/uuidv4"
-                        #   - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/url"
                         persistentId:
                           type: string
                           # title: Dataset persistent identifier
@@ -292,12 +208,6 @@ paths:
                           minLength: 36
                           maxLength: 36
                           example: 226fb3f1-4471-400a-8c39-2b66d46a39b6
-                          # type: string
-                          # title: Dataset persistent identifier
-                          # description: Dataset persistent identifier that is common across all dataset revisions
-                          # anyOf:
-                          # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/uuidv4"
-                          # - "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/url"
                         name:
                           type: string
                           # title: Dataset name
@@ -312,7 +222,6 @@ paths:
                           type: string 
                           # title: Dataset metadata version
                           description: Data set version.
-                          # "$ref": "components/schemas/pdc.dataset.definitions.schema.yaml#/definitions/semver"
                           pattern: "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$"
                           example: 1.1.0
                         self:
@@ -371,50 +280,6 @@ paths:
           description: |
 
             A 5xx status code means the server has a problem. For more details on the most common 5xx status codes and their meanings see the [HTTP status codes](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes).
-
-        # "500":
-        #   description: Internal Server Error
-        #   content:
-        #     application/fhir+json:
-        #       schema:
-        #         $ref: components/schemas/OperationErrorOutcome.yaml
-        #       example:
-        #         resourceType: OperationOutcome
-        #         issue:
-        #           - severity: error
-        #             code: unknown
-        #             details:
-        #               coding:
-        #                 - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
-        #                   version: '1'
-        #                   code: UNKNOWN_ERROR
-        #                   display: Unknown Error
-        #             diagnostics: "An unknown error occurred processing this request. Contact us for assistance diagnosing this issue: https://digital.nhs.uk/developer/help-and-support."
-
-        # "503":
-        #   description: |
-        #     The request timed out during processing. This does not imply the request has failed or been rejected. Error code: `SERVICE_UNAVAILABLE`.
-
-        #     Re-send the request after the time specified in the `Retry-After` header using the same `X-Request-ID` value.
-        #   headers:
-        #     RetryAfter:
-        #       $ref: 'components/schemas/RetryAfter.yaml'
-        #   content:
-        #     application/fhir+json:
-        #       schema:
-        #         $ref: 'components/schemas/OperationOutcome-2.yaml'
-        #       example:
-        #         resourceType: OperationOutcome
-        #         issue:
-        #           - severity: error
-        #             code: timeout
-        #             details:
-        #               coding:
-        #                 - system: 'https://fhir.nhs.uk/R4/CodeSystem/Spine-ErrorOrWarningCode'
-        #                   version: '1'
-        #                   code: SERVICE_UNAVAILABLE
-        #                   display: Service unavailable
-        #             diagnostics: "The downstream domain processing has not completed within the configured timeout period. Using the same 'X-Request-ID' header, retry your request after the time specified by the 'Retry-After' response header."
 
   '/datasets/{id}':
     get:
@@ -490,51 +355,6 @@ paths:
           description: |
 
             A 5xx status code means the server has a problem. For more details on the most common 5xx status codes and their meanings see the [HTTP status codes](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes).
-
-        # "500":
-        #   description: Internal Server Error
-        #   content:
-        #     application/fhir+json:
-        #       schema:
-        #         $ref: components/schemas/OperationErrorOutcome.yaml
-        #       example:
-        #         resourceType: OperationOutcome
-        #         issue:
-        #           - severity: error
-        #             code: unknown
-        #             details:
-        #               coding:
-        #                 - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
-        #                   version: '1'
-        #                   code: UNKNOWN_ERROR
-        #                   display: Unknown Error
-        #             diagnostics: "An unknown error occurred processing this request. Contact us for assistance diagnosing this issue: https://digital.nhs.uk/developer/help-and-support."
- 
-
-        # "503":
-        #   description: |
-        #     The request timed out during processing. This does not imply the request has failed or been rejected. Error code: `SERVICE_UNAVAILABLE`.
-
-        #     Re-send the request after the time specified in the `Retry-After` header using the same `X-Request-ID` value.
-        #   headers:
-        #     RetryAfter:
-        #       $ref: 'components/schemas/RetryAfter.yaml'
-        #   content:
-        #     application/fhir+json:
-        #       schema:
-        #         $ref: 'components/schemas/OperationOutcome-2.yaml'
-        #       example:
-        #         resourceType: OperationOutcome
-        #         issue:
-        #           - severity: error
-        #             code: timeout
-        #             details:
-        #               coding:
-        #                 - system: 'https://fhir.nhs.uk/R4/CodeSystem/Spine-ErrorOrWarningCode'
-        #                   version: '1'
-        #                   code: SERVICE_UNAVAILABLE
-        #                   display: Service unavailable
-        #             diagnostics: "The downstream domain processing has not completed within the configured timeout period. Using the same 'X-Request-ID' header, retry your request after the time specified by the 'Retry-After' response header."                    
 components:
   parameters:                                                 
     CorrelationID:
