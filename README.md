@@ -94,7 +94,10 @@ Successful deployment of the API Proxy requires:
 
  1. *Target Servers*:
     1. `health-research-data-catalogue-api`: Gateway to HRDC DEV API
-    2. `health-research-data-catalogue-api--int` Gateway to HRDC INT API
+    2. `health-research-data-catalogue-api--qa`: Gateway to HRDC NFR API
+    3. `health-research-data-catalogue-api--int` Gateway to HRDC INT API
+    4. `health-research-data-catalogue-api--prod` Gateway to HRDC PROD API
+
 
 :bulb: For Sandbox-running environments (`test`) these need to be present for successful deployment but can be set to empty/dummy values.
 
