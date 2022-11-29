@@ -19,8 +19,7 @@ info:
     * retrieve data set feeds
 
     You can get the following metadata information for each data set:
-    * characteristics such as: publisher, keywords, coverage, provenance, access, format, standards and data utility
-    * logical descriptions of field-level data
+    * overarching characteristics such as: publisher, keywords, coverage, provenance, access, format, standards, summary observations and data utility
 
     The API conforms to the [HDR UK Dataset Metadata Schema Standard v2.0.2](https://hdruk.github.io/schemata/schema/dataset/2.0.2/dataset.schema.json) created to enable sharing of information with the UK-wide 'federated' health research data catalogue.
 
