@@ -35,11 +35,8 @@ info:
     ## API status and roadmap
     This API is initially for use by Health Data Research (HDR) UK developers with other use cases to follow later.
 
-    This API is [in production, beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
-    - the API is available in our sandbox and integration test environments
-    - we might make breaking changes, but only if we cannot avoid it, and we'll give advance notice
-
-    If you would like to be involved in our beta programme or have any other queries, [contact us](https://digital.nhs.uk/developer/help-and-support).
+    This API is [in production](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
+    - we do not make routine breaking changes, if it cannot be avoided, for example, for security reasons, we will give advance notice
 
     To see our roadmap, or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/?order=popular&filter=all&tag=health-research-data-api#controls).    
 
