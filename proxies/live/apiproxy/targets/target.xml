@@ -19,15 +19,15 @@
   </FaultRules>
   <PreFlow>
     <Request>
+      <!-- EnhancedVerifyApiKey shared flow checks apikeys with no associated products which is missed by Apigee's VerifyApiKey policy. -->
+      <Step>
+        <Name>FlowCallout.EnhancedVerifyApiKey</Name>
+      </Step>
+      <!-- VerifyApiKey policy is still needed but set to continueOnError="true" to pass rate limiting info from the app to the
+      ApplyRateLimitingApiKey policy in the shared flow. -->
       <Step>
         <Name>VerifyApiKey.FromHeader</Name>
       </Step>
-<!--  <Step>
-        <Name>Quota</Name>
-      </Step>
-      <Step>
-        <Name>SpikeArrest</Name> 
-      </Step> -->
       <!-- DAW-1875-Build1 rate limiting to be handled by shared flow must be after authorization policy -->
       <Step>
         <Name>FlowCallout.ApplyRateLimitingApiKey</Name>
